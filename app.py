@@ -35,4 +35,18 @@ for line in range(0, len(MYSCHEDULE)):
         print("This task is " + currentLine.split(",")[2])
         print("")
         
-print("Processing Complete")
+#------------Asks for user input   
+     
+date = input("Input task due date (dd-mm-yyyy): ")
+task = input("Advise the task: ")
+category = input("Urgent or not urgent: ")
+
+#------------Checks if task is due today
+    
+if(todaysDate == date):
+  print("Todays Tasks:".upper())
+  print("")
+  print(date + " " + task + " " +  category.upper())
+else:
+  print("")
+  print("You have no tasks due today")
