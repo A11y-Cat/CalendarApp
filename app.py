@@ -44,6 +44,7 @@ category = input("Urgent or not urgent: ")
 #------------Checks if task is due today
     
 if(todaysDate == date):
+  print("")
   print("Todays Tasks:".upper())
   print("")
   print(date + " " + task + " " +  category.upper())
