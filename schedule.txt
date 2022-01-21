@@ -6,3 +6,7 @@
 21-01-2022,go for a run,urgent
 21-01-2022,clean house,urgent
 21-01-2022,get flowers,urgent
+22-01-2022,shops,not urgent
+22-02-2022,urgent,urgent
+22-01-2022,water plants,not urgent
+21-01-2022,Buy bread,not urgent
