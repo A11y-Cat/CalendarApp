@@ -3,3 +3,6 @@
 16-01-2022,walk the dog,not urgent
 17-01-2022,study,not urgent
 18-01-2022,test app,not urgent
+21-01-2022,go for a run,urgent
+21-01-2022,clean house,urgent
+21-01-2022,get flowers,urgent

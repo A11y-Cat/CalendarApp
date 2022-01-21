@@ -2,7 +2,7 @@
 import datetime
 
 scheduleFile = "schedule.txt"
-print("****Today's Tasks****".upper())
+
 
 #------------opening schedule file
 
@@ -17,11 +17,26 @@ now = datetime.datetime.now()
 
 todaysDate = now.strftime("%d-%m-%Y")
 
-#printing string I can use
+#------------Asks for user input   
 
-print("Todays date is " + str(todaysDate))
+date = input("Input task due date (dd-mm-yyyy): ")
+task = input("Advise the task: ")
+category = input("Urgent or not urgent: ")
+
+a = open(scheduleFile, "a")
+a.write("\n" + date + "," + task + "," + category)
 
 f.close()
+a.close()
+
+print("")
+print("")
+print("****Today's Tasks****".upper())
+print("")
+
+#------------printing string I can use
+
+print("Todays date is " + str(todaysDate))
 
 #------------schedule processing
 
@@ -35,19 +50,4 @@ for line in range(0, len(MYSCHEDULE)):
         print("This task is " + currentLine.split(",")[2])
         print("")
         
-#------------Asks for user input   
-     
-date = input("Input task due date (dd-mm-yyyy): ")
-task = input("Advise the task: ")
-category = input("Urgent or not urgent: ")
 
-#------------Checks if task is due today
-    
-if(todaysDate == date):
-  print("")
-  print("Todays Tasks:".upper())
-  print("")
-  print(date + " " + task + " " +  category.upper())
-else:
-  print("")
-  print("You have no tasks due today")
