@@ -70,20 +70,40 @@ if(user == "1"):
 
 
 if(user == "2"):
-    date = input("Input task due date (dd-mm-yyyy): ")
+#------------user inputs date and checks format
+    while True:
+        date = input("Input task due date (dd-mm-yyyy): ")
+        try:
+            date = datetime.datetime.strptime(date, "%d-%m-%Y")
+            dates = date.strftime("%d-%m-%Y")
+            break
+        except:
+            print("Please input date in dd-mm-yyyy format")
+            
+#------------ user inputs task     
+      
     task = input("Advise the task: ")
-    category = input("Urgent or not urgent: ")
-         
+    
+#------------user inputs category
+    while True:
+        category = input("Urgent or not urgent: ")
+        if category.lower() == "Urgent":
+            break
+        elif category.lower() == "not urgent":
+            break
+        else:
+            print("Please categorise your task as urgent or not urgent")
+            
 #------------Opens file to add user input
     a = open(scheduleFile, "a")
-    a.write("\n" + date + "," + task + "," + category)
+    a.write("\n" + dates + "," + task + "," + category)
     a.close()
     print("")
     print("Task added to calendar".upper())
 
 #------------If user task is due today print task list
     
-    if(date == todaysDate):
+    if(dates == todaysDate):
         f = open(scheduleFile, "r")
         MYSCHEDULE = f.read().split("\n")
         print("")
