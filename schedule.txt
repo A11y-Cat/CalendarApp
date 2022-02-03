@@ -22,3 +22,14 @@
 26-01-2022,phone doctor,urgent
 27-01-2022,buy bread,urgent
 26-01-2022,interview,urgent
+12-01-2022,wash windows,not urgent
+01-02-2022,write card,urgent
+13-01-2022,test,urgent
+13-01-2022,check emails,urgent
+01-02-2022,change bulb,not urgent
+17-01-2022,Go into the office,h
+14-01-2022,test,not urgent
+12-02-2022,new kitchen,urgent
+02-01-2022,get mail,urgent
+14-01-2022,test,not urgent
+03-02-2022,build cupboard,not urgent
