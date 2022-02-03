@@ -1,0 +1,4 @@
+user@computer ~ $ cat mycontacts.txt
+allison allison_mchugh@hotmail.co.uk
+
+ 

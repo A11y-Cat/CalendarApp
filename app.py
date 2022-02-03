@@ -1,5 +1,8 @@
 #------------Allisons calendar programme with category
 import datetime
+import smtplib
+import ssl
+from email.message import EmailMessage
 
 scheduleFile = "schedule.txt"
 
@@ -70,7 +73,9 @@ if(user == "1"):
 
 
 if(user == "2"):
+
 #------------user inputs date and checks format
+
     while True:
         date = input("Input task due date (dd-mm-yyyy): ")
         try:
@@ -124,3 +129,37 @@ if(user == "2"):
                 print(currentLine.split(",")[1] + (" - ") + ("This task is " + currentLine.split(",")[2]))
                 print("")
                 f.close()
+                
+def sendEmail():
+    subject = "Tasks Due Today"
+    senderEmail = "c0d3ra11y@gmail.com"
+    receiverEmail = "c0d3ra11y@gmail.com"
+    password = input("Enter a password: ")
+
+    message = EmailMessage()
+    message["From"] = senderEmail
+    message["To"] = receiverEmail
+    message["Subject"] = subject
+    body = cLine.split(",")[1] + (" - ") + ("this task is " + cLine.split(",")[2])
+    message.set_content(body)
+
+    context = ssl.create_default_context()
+
+    print("sending email")
+
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context = context) as server:
+        server.login(senderEmail, password)
+        server.sendmail(senderEmail,receiverEmail, message.as_string())
+        
+        print("email sent")
+                
+o = open(scheduleFile, 'r')
+task = o.read().split("\n")
+
+for line in range(0, len(task)):
+    cLine = task[line]
+    date = cLine.split(",")[0]
+    if date == todaysDate:
+        sendEmail()
+        o.close()
+                
