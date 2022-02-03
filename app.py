@@ -133,7 +133,7 @@ if(user == "2"):
 def sendEmail():
     subject = "Tasks Due Today"
     senderEmail = "c0d3ra11y@gmail.com"
-    receiverEmail = "c0d3ra11y@gmail.com"
+    receiverEmail = input("Enter an email address to send to: ")
     password = input("Enter a password: ")
 
     message = EmailMessage()
@@ -147,7 +147,7 @@ def sendEmail():
     message.add_alternative("""\
     <!DOCTYPE html>
     <html>
-        <header style="color:Teal;">**TASKS DUE**</header>
+        <header style="color:DarkCyan;">**TASKS DUE**</header>
             <body> 
                 <p style="color:LightSeaGreen;"> - """+str(body).capitalize()+ """</p>
             </body>
@@ -157,13 +157,13 @@ def sendEmail():
 
     context = ssl.create_default_context()
 
-    print("sending email")
+    print("sending email..")
 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, context = context) as server:
         server.login(senderEmail, password)
         server.sendmail(senderEmail,receiverEmail, message.as_string())
         
-        print("email sent")
+        
                 
 o = open(scheduleFile, 'r')
 task = o.read().split("\n")
@@ -171,7 +171,11 @@ task = o.read().split("\n")
 for line in range(0, len(task)):
     cLine = task[line]
     date = cLine.split(",")[0]
-    if date == todaysDate:
-        sendEmail()
-        o.close()
+    try:
+        if date == todaysDate:
+            sendEmail()
+            o.close()
+            print("email sent")
+    except:
+        print("Error- email not sent")
                 
