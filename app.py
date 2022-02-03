@@ -141,7 +141,19 @@ def sendEmail():
     message["To"] = receiverEmail
     message["Subject"] = subject
     body = cLine.split(",")[1] + (" - ") + ("this task is " + cLine.split(",")[2])
+    
     message.set_content(body)
+    
+    message.add_alternative("""\
+    <!DOCTYPE html>
+    <html>
+        <header style="color:Teal;">**TASKS DUE**</header>
+            <body> 
+                <p style="color:LightSeaGreen;"> - """+str(body).capitalize()+ """</p>
+            </body>
+    </html>
+    """, subtype='html')
+        
 
     context = ssl.create_default_context()
 
